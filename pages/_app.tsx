@@ -37,9 +37,12 @@ export default function App({ Component, pageProps }: AppProps) {
               marginLeft: '2rem',
               marginRight: '2rem',
             }}
+            gap="md"
           >
-            <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-            <Title>Date Idea Generator</Title>
+            <Flex gap="xl" align="center">
+              <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+              <Title>Date Idea Generator</Title>
+            </Flex>
             <ColorSchemeToggle />
           </Flex>
         </AppShell.Header>
@@ -49,13 +52,13 @@ export default function App({ Component, pageProps }: AppProps) {
         <AppShell.Main>
           <AnimatePresence>
             <motion.div
-              initial={{ x: 300, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: 300, opacity: 0 }}
+              initial={{ opacity: 0, y: '50px' }}
+              animate={{ opacity: 1, y: '0px' }}
+              exit={{ opacity: 0 }}
               transition={{
                 type: 'spring',
-                stiffness: 260,
-                damping: 20,
+                stiffness: 300,
+                damping: 35,
               }}
             >
               <Component {...pageProps} />

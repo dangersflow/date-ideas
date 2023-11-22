@@ -1,7 +1,11 @@
+import { Title } from '@mantine/core';
+
 export default function DateIdeasPage() {
     return (
         <>
-            Food Ideas
+            <Title size="h2">
+                Food Ideas
+            </Title>
         </>
     );
 }
