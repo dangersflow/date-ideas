@@ -1,4 +1,4 @@
-import { Button, Paper, Stack, Title } from '@mantine/core';
+import { Button, Stack, Title } from '@mantine/core';
 import { useQuery } from '@tanstack/react-query';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
@@ -6,14 +6,16 @@ import { useState } from 'react';
 ('client');
 
 //function to generate random number from 0 to 100
-function getRandomInt(max: number) {
-  return Math.floor(Math.random() * max);
-}
+// function getRandomInt(max: number) {
+//   return Math.floor(Math.random() * max);
+// }
 
 export default function DateIdeasPage() {
-  const { status, data, error, isFetching, refetch } = useQuery({ queryKey: ['/activities'] });
+  const { status, data, error, refetch } = useQuery<{ name: string }>({
+    queryKey: ['/activities'],
+  });
   const [hasFetchedOnce, setHasFetchedOnce] = useState(false);
-  const [hasAnimationFinished, setHasAnimationFinished] = useState(false);
+  //const [hasAnimationFinished, setHasAnimationFinished] = useState(false);
 
   return (
     <Stack
@@ -43,7 +45,7 @@ export default function DateIdeasPage() {
         <AnimatePresence mode="popLayout">
           {!hasFetchedOnce ? (
             <motion.div
-              key={'helloString'}
+              key="helloString"
               exit={{ opacity: 0, y: '350px' }}
               transition={{
                 type: 'spring',
@@ -66,7 +68,7 @@ export default function DateIdeasPage() {
             </motion.div>
           ) : (
             <motion.div
-              key={data.name}
+              key={(data as { name: string }).name}
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               exit={{ opacity: 0, y: '350px' }}

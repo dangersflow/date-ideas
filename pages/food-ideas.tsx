@@ -2,7 +2,9 @@ import { Button, Title } from '@mantine/core';
 import { useQuery } from '@tanstack/react-query';
 
 export default function FoodIdeasPage() {
-  const { status, data, error, isFetching, refetch } = useQuery({ queryKey: ['/meals'] });
+  const { status, data, error, refetch } = useQuery<{ name: string }>({
+    queryKey: ['/meals'],
+  });
 
   return (
     <>
