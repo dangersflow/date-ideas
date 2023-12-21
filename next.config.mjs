@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import bundleAnalyzer from '@next/bundle-analyzer';
 
 const withBundleAnalyzer = bundleAnalyzer({
@@ -8,5 +9,8 @@ export default withBundleAnalyzer({
   reactStrictMode: false,
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  env: {
+    API_URL: process.env.API_URL,
   },
 });
