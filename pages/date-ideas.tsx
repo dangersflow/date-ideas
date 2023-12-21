@@ -6,7 +6,7 @@ import { useState } from 'react';
 ('client');
 
 //function to generate random number from 0 to 100
-function getRandomInt(max) {
+function getRandomInt(max: number) {
   return Math.floor(Math.random() * max);
 }
 
